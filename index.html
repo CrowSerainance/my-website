@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio foundation focused on clear storytelling, performance, and maintainability."
+    />
+    <title>Your Name — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="container nav" aria-label="Main navigation">
+        <a class="brand" href="#">Your Name</a>
+        <ul class="nav-links">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero container">
+        <p class="eyebrow">Software Engineer</p>
+        <h1>Building fast, reliable, and thoughtful web experiences.</h1>
+        <p class="hero-copy">
+          This foundation is intentionally simple: semantic HTML, resilient CSS, and light JavaScript. Add your
+          strongest project stories here.
+        </p>
+      </section>
+
+      <section id="projects" class="container section">
+        <div class="section-heading">
+          <h2>Highlighted Projects</h2>
+          <p>Each card should explain what you changed and why it mattered.</p>
+        </div>
+        <div id="projects-grid" class="projects-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="about" class="container section">
+        <h2>About</h2>
+        <p>
+          Share your technical decision-making process, constraints, and measurable outcomes to show ownership of your
+          work.
+        </p>
+      </section>
+
+      <section id="contact" class="container section">
+        <h2>Contact</h2>
+        <p>
+          <a href="mailto:you@example.com">you@example.com</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Your Name</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
