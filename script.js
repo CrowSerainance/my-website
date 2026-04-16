@@ -1,68 +1,45 @@
 const projectsGrid = document.getElementById('projects-grid');
 const yearEl = document.getElementById('year');
 
-if (yearEl) {
-  yearEl.textContent = String(new Date().getFullYear());
-}
-
-const createLink = (href, label) => {
-  const anchor = document.createElement('a');
-  anchor.href = href;
-  anchor.target = '_blank';
-  anchor.rel = 'noreferrer noopener';
-  anchor.textContent = label;
-  return anchor;
-};
+yearEl.textContent = new Date().getFullYear();
 
 const createProjectCard = (project) => {
   const article = document.createElement('article');
   article.className = 'project-card';
 
-  const title = document.createElement('h3');
-  title.textContent = project.title;
+  const tags = project.stack
+    .map((item) => `<span class="tag">${item}</span>`)
+    .join('');
 
-  const summary = document.createElement('p');
-  summary.textContent = project.summary;
-
-  const tags = document.createElement('div');
-  tags.className = 'tags';
-  tags.setAttribute('aria-label', 'Technology stack');
-
-  project.stack.forEach((item) => {
-    const tag = document.createElement('span');
-    tag.className = 'tag';
-    tag.textContent = item;
-    tags.append(tag);
-  });
-
-  const links = document.createElement('div');
-  links.className = 'links';
-  links.append(createLink(project.repo, 'Repository'), createLink(project.demo, 'Live demo'));
-
-  article.append(title, summary, tags, links);
+  article.innerHTML = `
+    <h3>${project.title}</h3>
+    <p>${project.summary}</p>
+    <div class="tags" aria-label="Technology stack">${tags}</div>
+    <div class="links">
+      <a href="${project.repo}" target="_blank" rel="noreferrer noopener">Repository</a>
+      <a href="${project.demo}" target="_blank" rel="noreferrer noopener">Live demo</a>
+    </div>
+  `;
 
   return article;
 };
 
 const renderProjects = async () => {
-  if (!projectsGrid) return;
-
   try {
-    const response = await fetch('content/projects.json', { cache: 'no-store' });
+    const response = await fetch('content/projects.json');
     if (!response.ok) throw new Error('Could not load projects');
 
     const projects = await response.json();
     const fragment = document.createDocumentFragment();
 
-    for (const project of projects) {
+    projects.forEach((project) => {
       fragment.append(createProjectCard(project));
-    }
+    });
 
-    projectsGrid.replaceChildren(fragment);
+    projectsGrid.textContent = '';
+    projectsGrid.append(fragment);
   } catch (error) {
-    const fallback = document.createElement('p');
-    fallback.textContent = 'Could not load projects. Update content/projects.json and retry.';
-    projectsGrid.replaceChildren(fallback);
+    projectsGrid.innerHTML = '<p>Could not load projects. Update content/projects.json and retry.</p>';
     console.error(error);
   }
 };
