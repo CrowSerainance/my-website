@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Project One",
+    "summary": "Replace this with a concise impact-focused summary.",
+    "stack": ["HTML", "CSS", "JavaScript"],
+    "repo": "https://github.com/yourname/project-one",
+    "demo": "https://project-one.example.com"
+  },
+  {
+    "title": "Project Two",
+    "summary": "Focus on outcomes: performance, UX, business value.",
+    "stack": ["TypeScript", "React", "Testing"],
+    "repo": "https://github.com/yourname/project-two",
+    "demo": "https://project-two.example.com"
+  }
+]
